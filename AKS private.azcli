@@ -1,0 +1,35 @@
+# install the Azure CLI on Linux
+sudo apt-get update
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+az --version
+
+# set the variables
+#TENANT_NAME_FY25 set as Codespace secret in GitHub
+export RESOURCE_GROUP_NAME="rg-aks-private"
+export LOCATION="eastus2"
+export PRIVATE_CLUSTER_NAME="aks-private-01"
+echo $RESOURCE_GROUP_NAME
+echo $LOCATION
+
+echo $TENANT_NAME_FY25
+# login to Azure
+az login --tenant $TENANT_NAME_FY25
+#az account set --subscription $SUBSCRIPTION_NAME_FY25
+
+
+
+# create a resource group
+az group create --name $RESOURCE_GROUP_NAME --location $LOCATION
+az group delete --name rg-aks-private --yes --no-wait
+
+# create a private AKS cluster
+az aks create \
+    --name $PRIVATE_CLUSTER_NAME \
+    --resource-group $RESOURCE_GROUP_NAME \
+    --load-balancer-sku standard \
+    --enable-private-cluster \
+    --generate-ssh-keys \
+    --node-vm-size Standard_B2as_v2 \
+    --node-count 1
+
+az aks create --name $PRIVATE_CLUSTER_NAME --resource-group $RESOURCE_GROUP_NAME --load-balancer-sku standard --enable-private-cluster --generate-ssh-keys  --node-vm-size Standard_B2as_v2 --node-count 1

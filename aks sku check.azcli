@@ -1,0 +1,5 @@
+az vm list-skus --location <region> --output table
+
+az vm list-skus --location eastus --output table
+
+az vm list-skus --location eastus --query "[?name=='Standard_DS2_v3']" --output table
