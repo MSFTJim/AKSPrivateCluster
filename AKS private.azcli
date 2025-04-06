@@ -7,16 +7,15 @@ az --version
 #TENANT_NAME_FY25 set as Codespace secret in GitHub
 export RESOURCE_GROUP_NAME="rg-aks-private"
 export LOCATION="eastus2"
-export PRIVATE_CLUSTER_NAME="aks-private-01"
+export PRIVATE_CLUSTER_NAME="aks-private-02"
 echo $RESOURCE_GROUP_NAME
 echo $LOCATION
+echo $TENANT_ID_FY25
 
-echo $TENANT_NAME_FY25
 # login to Azure
-az login --tenant $TENANT_NAME_FY25
+az account show
+az login --tenant $TENANT_ID_FY25
 #az account set --subscription $SUBSCRIPTION_NAME_FY25
-
-
 
 # create a resource group
 az group create --name $RESOURCE_GROUP_NAME --location $LOCATION
