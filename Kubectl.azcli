@@ -6,4 +6,5 @@ echo $RESOURCE_GROUP_NAME
 echo $LOCATION
 echo $PRIVATE_CLUSTER_NAME
 
-az aks get-credentials --resource-group RESOURCE_GROUP_NAME --name $PRIVATE_CLUSTER_NAME
+az aks get-credentials --resource-group $RESOURCE_GROUP_NAME --name $PRIVATE_CLUSTER_NAME
+kubectl get nodes

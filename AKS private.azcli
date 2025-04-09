@@ -7,10 +7,11 @@ az --version
 #TENANT_NAME_FY25 set as Codespace secret in GitHub
 export RESOURCE_GROUP_NAME="rg-aks-private"
 export LOCATION="eastus2"
-export PRIVATE_CLUSTER_NAME="aks-private-02"
+export PRIVATE_CLUSTER_NAME="aks-private-03"
 echo $RESOURCE_GROUP_NAME
 echo $LOCATION
 echo $TENANT_ID_FY25
+echo $PRIVATE_CLUSTER_NAME
 
 # login to Azure
 az account show
@@ -29,6 +30,7 @@ az aks create \
     --enable-private-cluster \
     --generate-ssh-keys \
     --node-vm-size Standard_B2as_v2 \
-    --node-count 1
+    --node-count 3
 
 az aks create --name $PRIVATE_CLUSTER_NAME --resource-group $RESOURCE_GROUP_NAME --load-balancer-sku standard --enable-private-cluster --generate-ssh-keys  --node-vm-size Standard_B2as_v2 --node-count 1
+
