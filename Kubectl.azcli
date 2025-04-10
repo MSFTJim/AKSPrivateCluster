@@ -8,3 +8,6 @@ echo $PRIVATE_CLUSTER_NAME
 
 az aks get-credentials --resource-group $RESOURCE_GROUP_NAME --name $PRIVATE_CLUSTER_NAME
 kubectl get nodes
+
+az aks command invoke --name $PRIVATE_CLUSTER_NAME --resource-group $RESOURCE_GROUP_NAME --command "kubectl get nodes" 
+
